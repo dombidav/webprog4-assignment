@@ -10,7 +10,7 @@
   </a>
 </p>
 
-> Assignment work for Webprogramming 4 class in EKKU
+> Assignment work for Web Programming 4 class in EKKU
 
 ### 🏠 [Homepage](https://github.com/dombidav/webprog4-assignment)
 
@@ -18,14 +18,21 @@
 
 ## Prerequisites
 
-1. PHP 8.0
-2. Node.js 16.0
-3. Composer 2.0
-4. Any RDBMS of the following:
+1. [PHP 8.x](https://www.php.net/releases/8.0/en.php)
+2. [Node.js 16.x](https://nodejs.org/en/download/) (LTS version is recommended)
+3. [Composer 2.x](https://getcomposer.org/download/)
+4. [Yarn Classic](https://classic.yarnpkg.com/)
+5. Any RDBMS of the following:
   - MySQL (Recommended)
   - SQL Server
   - Oracle SQL
   - PostgreSQL
+
+> **❗IMPORTANT:** Do **NOT** use npm as a package manager. 
+> 
+> ❗You should not use it generally, but especially not for this project
+> 
+> ❗ Yarn is **REQUIRED** for this project.
 
 ## Install
 
@@ -38,7 +45,7 @@
 ```sh
 git clone https://github.com/dombidav/webprog4-assignment.git
 cd webprog4-assignment
-npm run setup
+yarn
 code server/.env
 code client/src/environments/environments.local.ts
 ```
@@ -46,14 +53,14 @@ code client/src/environments/environments.local.ts
 ## Usage
 
 ```sh
-npm run dev
+yarn start
 ```
 > Note: Hot-reload is supported on both frontend and backend
 
 ## Run tests
 
 ```sh
-npm run test
+yarn test
 ```
 
 ## Author
@@ -74,7 +81,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2021 [Dombi Tibor Dávid (HL5U4V)](https://github.com/dombidav).<br />
+Copyright © 2021 [Dombi Tibor Dávid (HL5U4V)](https://github.com/dombidav).<br>
 This project is [MIT](https://github.com/dombidav/webprog4-assignment/blob/main/LICENSE) licensed.
 
 ***
