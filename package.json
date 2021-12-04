@@ -1,0 +1,13 @@
+{
+  "name": "web4-assignment-hl5u4v",
+  "version": "1.0.0",
+  "description": "Assignment work for Webprogramming 4 class in EKKU | Dombi Tibor Dávid (HL5U4V)",
+  "repository": "https://github.com/dombidav/webprog4-assignment.git",
+  "author": "Dombi Tibor <dombidav@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "setup:client": "cd client && yarn && cp src/environments/environment.local.ts.example src/environments/environment.local.ts",
+    "setup:server": "cd server && composer install && cp .env.example .env && php artisan migrate:fresh --seed",
+    "postinstall": "(npm run setup:server); (npm run setup:client);"
+  }
+}
