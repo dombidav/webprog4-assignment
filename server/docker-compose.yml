@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  database:
+    container_name: web4_mysql
+    restart: always
+    image: mysql:latest
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_USER: 'root'
+      MYSQL_PASS: ''
+    volumes:
+      - ./datavolume:/var/lib/mysql
+  
+  server:
+    container_name: web4_server
+    build:
+      context: .
+    ports:
+        - '8080:80'
+    volumes:
+      - .:/var/www/laravel_docker
+      - ./.apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    depends_on:
+      - database
