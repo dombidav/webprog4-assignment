@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="row">
+      <!-- Spacer  -->
+      <div class="col-auto col-3"></div>
+      <!-- Login Form -->
+      <div class="col-12 col-md-6 pt-5">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="text-center">
+              <img alt="" class="mb-2" src="assets/icon/favicon.png">
+              <p>Please login with your <strong>email</strong> and <strong>password</strong>.</p>
+              <p>Don't have an account? Register here!</p>
+              <div class="panel-body">
+                <form (ngSubmit)="submitForm($event)" [formGroup]="formGroup" action="#" id="loginForm" name="loginForm" novalidate>
+                  <div class="form-group">
+                    <ion-item lines="full">
+                      <ion-label position="floating">Email</ion-label>
+                      <ion-input formControlName="email" placeholder="email@example.com" required type="email"></ion-input>
+                      <ion-icon name="person-circle-outline" slot="end"></ion-icon>
+                    </ion-item>
+                    <!-- Error messages -->
+                    <span *ngIf="isSubmitted && errorControl.email.errors" class="error ion-padding">
+                      Email is not in valid format
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <ion-item>
+                      <ion-label position="floating">Password</ion-label>
+                      <app-password-input>
+                        <ion-input formControlName="password" placeholder="Password" type="password"></ion-input>
+                      </app-password-input>
+                    </ion-item>
+                    <span *ngIf="isSubmitted && errorControl.password.errors" class="error ion-padding">
+                      Password is required
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <ion-item>
+                      <ion-label>Remember me</ion-label>
+                      <ion-checkbox formControlName="rememberMe"></ion-checkbox>
+                    </ion-item>
+                  </div>
+                  <div class="form-group">
+                    <input class="btn btn-lg btn-primary mt-3" type="submit" value="Login">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Spacer  -->
+      <div class="col-auto col-3"></div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu class="sidebar" contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header>{{ (this.authService.user$ | async)?.name ?? 'Guest' }}</ion-list-header>
+          <ion-note>{{ (this.authService.user$ | async)?.email ?? 'Logged out' }}</ion-note>
+          <ng-container *ngFor="let p of pages; let i = index">
+            <ion-menu-toggle *ngIf="p" auto-hide="false">
+              <ion-item [routerLinkActiveOptions]="" [routerLink]="[p.url]" detail="false" lines="none" routerDirection="root" routerLinkActive="selected">
+                <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'" slot="start"></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ng-container>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+  <!-- Notifications -->
+  <p-toast position="bottom-center"></p-toast>
+  <p-confirmDialog header="Confirm" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+  <!-- /Notifications -->
+</ion-app>
