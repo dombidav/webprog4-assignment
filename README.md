@@ -1,5 +1,5 @@
 <h1 align="center">Webprogramming 4 - Assignment Work</h1>
-<img alt="Angular + Lumen" src="https://github.com/dombidav/webprog4-assignment/blob/main/.images/laravel_angular.png" />
+<img alt="Angular + Lumen" src="https://github.com/dombidav/webprog4-assignment/blob/main/.github/images/laravel_angular.png" />
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://web4.dombidav.dev/docs" target="_blank">
