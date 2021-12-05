@@ -12,7 +12,10 @@
 
 > Assignment work for Web Programming 4 class in EKKU
 
-### 🏠 [Backend](https://github.com/dombidav/webprog4-assignment)
+### [Diagrams & Plans](https://drive.google.com/file/d/1TYahHG1lfLefxR0TSvzDitu4FQDimwYw/view?usp=sharing)
+### [Backend Documentaion](https://web4.stoplight.io/docs/web4-assignment/)
+### [Frontend Documentaion](https://dombidav.github.io/webprog4-assignment/)
+### [Repository](https://github.com/dombidav/webprog4-assignment)
 
 ## Prerequisites
 
