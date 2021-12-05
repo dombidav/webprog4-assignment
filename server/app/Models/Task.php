@@ -29,7 +29,6 @@ class Task extends Model
     use UsesUuid, ApiResource;
 
     protected $fillable = ['name', 'description', 'parent_id', 'project_id', 'reporter_id', 'assignee_id'];
-    protected $hidden = ['parent_id', 'project_id', 'assignee_id', 'reporter_id'];
 
     public function subtasks(): HasMany
     {

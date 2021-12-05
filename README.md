@@ -12,9 +12,7 @@
 
 > Assignment work for Web Programming 4 class in EKKU
 
-### 🏠 [Homepage](https://github.com/dombidav/webprog4-assignment)
-
-### ✨ [Demo](https://web4.dombidav.dev)
+### 🏠 [Backend](https://github.com/dombidav/webprog4-assignment)
 
 ## Prerequisites
 
