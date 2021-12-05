@@ -2,24 +2,24 @@
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
-        <meta content="ie=edge" http-equiv="x-ua-compatible">
-        <title>web-4-assignment documentation</title>
-        <meta content="" name="description">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Web4 Documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="./images/favicon.ico" rel="icon" type="image/x-icon">
-	   <link href="./styles/style.css" rel="stylesheet">
-        <link href="./styles/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a class="navbar-brand" href="./">web-4-assignment documentation</a>
-            <button class="btn btn-default btn-menu ion-ios-menu" id="btn-menu" type="button"></button>
+            <a href="./" class="navbar-brand">Web4 Documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input placeholder="Type to search" type="text"></div>            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -61,7 +61,7 @@
             <th>File</th>
             <th>Type</th>
             <th>Identifier</th>
-            <th class="statements" data-sort-default style="text-align:right">Statements</th>
+            <th style="text-align:right" class="statements" data-sort-default>Statements</th>
         </tr>
     </thead>
     <tbody>
@@ -72,9 +72,9 @@
             </td>
             <td>component</td>
             <td>AppComponent</td>
-            <td align="right" data-sort="57">
-                <span class="coverage-percent">57 %</span>
-                <span class="coverage-count">(4/7)</span>
+            <td align="right" data-sort="62">
+                <span class="coverage-percent">62 %</span>
+                <span class="coverage-count">(5/8)</span>
             </td>
         </tr>
         <tr class="very-good">
@@ -92,19 +92,187 @@
         <tr class="low">
             <td>
                 <!-- miscellaneous -->
-                <a href="./components/FolderPage.html">src/app/folder/folder.page.ts</a>
+                <a href="./injectables/CrudService.html">src/app/classes/CrudService.generic.ts</a>
             </td>
-            <td>component</td>
-            <td>FolderPage</td>
+            <td>injectable</td>
+            <td>CrudService</td>
             <td align="right" data-sort="0">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/ICrud.html">src/app/classes/ICrud.interface.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ICrud</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IResponse.html">src/app/classes/IResponse.generic.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/ITimestamp.html">src/app/classes/ITimestamp.interface.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ITimestamp</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/JsonWebTokenEntity.html">src/app/classes/JsonWebToken.entity.ts</a>
+            </td>
+            <td>class</td>
+            <td>JsonWebTokenEntity</td>
+            <td align="right" data-sort="33">
+                <span class="coverage-percent">33 %</span>
+                <span class="coverage-count">(2/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IToken.html">src/app/classes/JsonWebToken.entity.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IToken</td>
+            <td align="right" data-sort="25">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/Project.html">src/app/classes/Project.entity.ts</a>
+            </td>
+            <td>class</td>
+            <td>Project</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IProject.html">src/app/classes/Project.entity.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IProject</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/Task.html">src/app/classes/Task.entity.ts</a>
+            </td>
+            <td>class</td>
+            <td>Task</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/17)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/ITask.html">src/app/classes/Task.entity.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ITask</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/Team.html">src/app/classes/Team.entity.ts</a>
+            </td>
+            <td>class</td>
+            <td>Team</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/ITeam.html">src/app/classes/Team.entity.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ITeam</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./classes/User.html">src/app/classes/User.entity.ts</a>
+            </td>
+            <td>class</td>
+            <td>User</td>
+            <td align="right" data-sort="45">
+                <span class="coverage-percent">45 %</span>
+                <span class="coverage-count">(5/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/IUser.html">src/app/classes/User.entity.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IUser</td>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(1/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./guards/GuestGuard.html">src/app/http/guards/guest.guard.ts</a>
+            </td>
+            <td>guard</td>
+            <td>GuestGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
             </td>
         </tr>
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./interceptors/AuthInterceptor.html">src/app/interceptors/auth.interceptor.ts</a>
+                <a href="./interceptors/AuthInterceptor.html">src/app/http/interceptors/auth.interceptor.ts</a>
             </td>
             <td>interceptor</td>
             <td>AuthInterceptor</td>
@@ -116,13 +284,241 @@
         <tr class="very-good">
             <td>
                 <!-- miscellaneous -->
-                <a href="./injectables/StorageService.html">src/app/services/storage.service.ts</a>
+                <a href="./components/LoginPage.html">src/app/pages/auth/login/login.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>LoginPage</td>
+            <td align="right" data-sort="83">
+                <span class="coverage-percent">83 %</span>
+                <span class="coverage-count">(5/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ProfilePage.html">src/app/pages/auth/profile/profile.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>ProfilePage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/RegisterPage.html">src/app/pages/auth/register/register.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>RegisterPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/HomePage.html">src/app/pages/home/home.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>HomePage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ProjectReadPage.html">src/app/pages/projects/project-read/project-read.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>ProjectReadPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/19)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/ProjectService.html">src/app/pages/projects/project.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>ProjectService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ProjectsPage.html">src/app/pages/projects/projects.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>ProjectsPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/TaskService.html">src/app/pages/tasks/task.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>TaskService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/TeamReadPage.html">src/app/pages/teams/team-read/team-read-page.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>TeamReadPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/23)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/TeamService.html">src/app/pages/teams/team.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>TeamService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/TeamsPage.html">src/app/pages/teams/teams.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>TeamsPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/UserReadPage.html">src/app/pages/users/user-read/user-read-page.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>UserReadPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/UserService.html">src/app/pages/users/user.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>UserService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/UsersPage.html">src/app/pages/users/users.page.ts</a>
+            </td>
+            <td>component</td>
+            <td>UsersPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PasswordInputComponent.html">src/app/shared/components/password-input/password-input.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PasswordInputComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/AuthService.html">src/app/shared/services/auth.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>AuthService</td>
+            <td align="right" data-sort="33">
+                <span class="coverage-percent">33 %</span>
+                <span class="coverage-count">(4/12)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/RestService.html">src/app/shared/services/rest.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>RestService</td>
+            <td align="right" data-sort="87">
+                <span class="coverage-percent">87 %</span>
+                <span class="coverage-count">(7/8)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/StorageService.html">src/app/shared/services/storage.service.ts</a>
             </td>
             <td>injectable</td>
             <td>StorageService</td>
             <td align="right" data-sort="87">
                 <span class="coverage-percent">87 %</span>
                 <span class="coverage-count">(7/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#PasswordConfirmedValidator">src/app/shared/validators/password-confirmed.validator.ts</a>
+            </td>
+            <td>variable</td>
+            <td>PasswordConfirmedValidator</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#passwordValidator">src/app/shared/validators/password.validator.ts</a>
+            </td>
+            <td>function</td>
+            <td>passwordValidator</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
             </td>
         </tr>
         <tr class="very-good">
@@ -206,8 +602,8 @@
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
 
-       <script defer src="./js/menu-wc.js"></script>
-       <script defer nomodule src="./js/menu-wc_es5.js"></script>
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 

@@ -55,13 +55,13 @@
 
         for (var i = 0; i < sortedGroups.length; i++) {
             var property = sortedGroups[i];
-
+            
             var $li = $('<li>', {
                 'class': 'search-results-group'
             });
             var finalPropertyLabel = '';
             var propertyLabels = property.split('-');
-
+            
             if (propertyLabels.length === 2 && propertyLabels[0] !== 'miscellaneous' && propertyLabels[0] !== 'additional') {
                 finalPropertyLabel = propertyLabels[0].charAt(0).toUpperCase() + propertyLabels[0].substring(1) + ' - ' + propertyLabels[1].charAt(0).toUpperCase() + propertyLabels[1].substring(1) + ' (' + groups[property].results.length + ')';
             } else if (propertyLabels[0] === 'additional') {
@@ -94,7 +94,7 @@
                     case 5:
                         link = '../'.repeat(COMPODOC_CURRENT_PAGE_DEPTH);
                         break;
-                }
+                };
                 var finalResLabel = res.title.split(' - ')[1].charAt(0).toUpperCase() + res.title.split(' - ')[1].substring(1);
                 var $link = $('<a>', {
                     'href': link + res.url,
@@ -206,7 +206,7 @@
     function launchSearchFromQueryString() {
         var q = getParameterByName('q');
         if (q && q.length > 0) {
-            // Update search components
+            // Update search inputs
             $.each($searchInputs, function(index, item){
                 var item = $(item);
                 item.val(q)

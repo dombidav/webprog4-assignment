@@ -2,24 +2,24 @@
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
-        <meta content="ie=edge" http-equiv="x-ua-compatible">
-        <title>web-4-assignment documentation</title>
-        <meta content="" name="description">
-        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Web4 Documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="../images/favicon.ico" rel="icon" type="image/x-icon">
-	   <link href="../styles/style.css" rel="stylesheet">
-        <link href="../styles/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a class="navbar-brand" href="../">web-4-assignment documentation</a>
-            <button class="btn btn-default btn-menu ion-ios-menu" id="btn-menu" type="button"></button>
+            <a href="../" class="navbar-brand">Web4 Documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input placeholder="Type to search" type="text"></div>            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -45,10 +45,10 @@
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="active">
-            <a data-link="info" data-toggle="tab" href="#info" id="info-tab" role="tab">Info</a>
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
         </li>
         <li >
-            <a data-link="source" data-toggle="tab" href="#source" id="source-tab" role="tab">Source</a>
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/interceptors/auth.interceptor.ts</code>
+            <code>src/app/http/interceptors/auth.interceptor.ts</code>
         </p>
 
 
@@ -114,12 +114,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, storage: <a href="../injectables/StorageService.html" target="_self">StorageService</a>, redirect: RedirectService)</code>
+<code>constructor(storage: <a href="../injectables/StorageService.html" target="_self">StorageService</a>, redirect: RedirectService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a class="link-to-prism" data-line="12" href="">src/app/interceptors/auth.interceptor.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/http/interceptors/auth.interceptor.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -138,32 +138,16 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>router</td>
-
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
-                                                        </td>
-
-                                                    <td>
-                                                            No
-                                                    </td>
-
-                                                        <td>
-                                                                <p>Router singleton (Angular or Ionic strategy as defined in <a href="../modules/AppModule.html">AppModule</a>)</p>
-
-                                                        </td>
-                                                </tr>
-                                                <tr>
                                                         <td>storage</td>
-
+                                                  
                                                         <td>
                                                                         <code><a href="../injectables/StorageService.html" target="_self" >StorageService</a></code>
                                                         </td>
-
+                                                  
                                                     <td>
                                                             No
                                                     </td>
-
+                                                    
                                                         <td>
                                                                 <p>Service responsible for handling local storage</p>
 
@@ -171,15 +155,15 @@
                                                 </tr>
                                                 <tr>
                                                         <td>redirect</td>
-
+                                                  
                                                         <td>
                                                                     <code>RedirectService</code>
                                                         </td>
-
+                                                  
                                                     <td>
                                                             No
                                                     </td>
-
+                                                    
                                                         <td>
                                                                 <p>Service responsible for handling redirects</p>
 
@@ -195,7 +179,7 @@
 </section>
 
             <section>
-
+    
     <h3 id="methods">
         Methods
     </h3>
@@ -222,8 +206,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a class="link-to-prism" data-line="63"
-                            href="">src/app/interceptors/auth.interceptor.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/http/interceptors/auth.interceptor.ts:58</a></div>
                 </td>
             </tr>
 
@@ -235,7 +219,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
-
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -288,7 +272,7 @@
 
                     </div>
                     <div class="io-description">
-
+                        
                     </div>
                 </td>
             </tr>
@@ -316,8 +300,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a class="link-to-prism" data-line="41"
-                            href="">src/app/interceptors/auth.interceptor.ts:41</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/http/interceptors/auth.interceptor.ts:37</a></div>
                 </td>
             </tr>
 
@@ -329,7 +313,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
-
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -366,7 +350,7 @@
 
                     </div>
                     <div class="io-description">
-
+                        
                     </div>
                 </td>
             </tr>
@@ -392,8 +376,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a class="link-to-prism" data-line="31"
-                            href="">src/app/interceptors/auth.interceptor.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/http/interceptors/auth.interceptor.ts:27</a></div>
                 </td>
             </tr>
 
@@ -405,7 +389,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
-
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -458,7 +442,7 @@
 
                     </div>
                     <div class="io-description">
-
+                        
                     </div>
                 </td>
             </tr>
@@ -472,26 +456,22 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from &#x27;@angular/common/http&#x27;
-import { Router } from &#x27;@angular/router&#x27;
 import { Observable, of, throwError } from &#x27;rxjs&#x27;
 import { catchError } from &#x27;rxjs/operators&#x27;
-import { StorageService } from &#x27;../services/storage.service&#x27;
+import { StorageService } from &#x27;../../shared/services/storage.service&#x27;
 import { fromPromise } from &#x27;rxjs/internal-compatibility&#x27;
-import { RedirectService } from &#x27;../services/redirect.service&#x27;
+import { RedirectService } from &#x27;../../shared/services/redirect.service&#x27;
 
 /** Handles Authorization and authentication errors */
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
   /**
-   * @param router Router singleton (Angular or Ionic strategy as defined in {@link AppModule})
    * @param storage Service responsible for handling local storage
    * @param redirect Service responsible for handling redirects
    */
   constructor(
-    private router: Router,
     private storage: StorageService,
-    private redirect: RedirectService
+    private redirect: RedirectService,
   ) {}
 
   /**
@@ -513,9 +493,8 @@ export class AuthInterceptor implements HttpInterceptor {
   private handleError(err: HttpErrorResponse): Observable&lt;any&gt; {
     switch (err.status) {
       case 401:
-        // noinspection JSIgnoredPromiseFromCall
         this.redirect.push(window.location.href)
-        this.redirect.to(&#x27;/login&#x27;)
+        this.redirect.to(&#x27;/login2&#x27;)
         break
       case 422: //Validation Error
       default:
@@ -534,11 +513,10 @@ export class AuthInterceptor implements HttpInterceptor {
    */
   private async handle(next: HttpHandler, req: HttpRequest&lt;any&gt;) {
     let token: string &#x3D; null
-    if (!req.headers.get(&#x27;X-AppMeta&#x27;)?.split(&#x27;,&#x27;).includes(&#x27;NO-AUTH&#x27;)) {
-      await this.storage.waitForStorage()
+    if (!req.headers.get(&#x27;X-AppMeta&#x27;)?.split(&#x27;,&#x27;).includes(&#x27;NO-AUTH&#x27;))
       token &#x3D; await this.storage.get&lt;string&gt;(&#x27;token&#x27;) ?? null
-    }
-    const authReq &#x3D; req.clone(token ? { headers: req.headers.set(&#x27;Authorization&#x27;, token) } : {}) //Request object are immutable
+
+    const authReq &#x3D; req.clone(token ? { headers: req.headers.set(&#x27;Authorization&#x27;, &#x60;Bearer ${token.toString()}&#x60;) } : {}) //Request object are immutable
 
     return next.handle(authReq).pipe(catchError(x &#x3D;&gt; this.handleError(x))).toPromise() //Add the error handler to the pipe
   }
@@ -581,8 +559,8 @@ export class AuthInterceptor implements HttpInterceptor {
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
-       <script defer src="../js/menu-wc.js"></script>
-       <script defer nomodule src="../js/menu-wc_es5.js"></script>
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
