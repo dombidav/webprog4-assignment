@@ -18,7 +18,7 @@ export abstract class CrudService<TInterface, TClass extends TInterface, TPost=a
     return 'id'
   }
   abstract get uri(): string;
-  abstract get factory(): (data: TInterface) => TClass;
+  abstract get factory(): (data: TInterface|any) => TClass;
   abstract getBody(entity: TClass): TPost&TPut;
 
   // section uris

@@ -1,6 +1,7 @@
 import { IUser, User } from './User.entity'
 import { ITimestamp } from './ITimestamp.interface'
 import { ICrud } from './ICrud.interface'
+import { IProject, Project } from './Project.entity'
 
 export interface ITeam extends ITimestamp, ICrud{
   id: string
@@ -8,6 +9,7 @@ export interface ITeam extends ITimestamp, ICrud{
   user: IUser
   user_id: string
   users: IUser[]
+  projects: IProject[]
 }
 
 export class Team implements ITeam {
@@ -19,11 +21,12 @@ export class Team implements ITeam {
     public users: User[],
     public created_at: string,
     public updated_at: string,
+    public projects: IProject[],
     public edit: boolean = false,
     public del: boolean = false
   ) {}
 
-  static factory(data: ITeam) {
+  static factory(data: ITeam|any) {
     return new Team(
       data.id ?? '',
       data.name ?? '',
@@ -32,6 +35,7 @@ export class Team implements ITeam {
       data.users?.map(user => User.factory(user)) ?? [],
       data.created_at ?? (new Date()).toISOString(),
       data.updated_at ?? (new Date()).toISOString(),
+      data.projects?.map(project => Project.factory(project)) ?? [],
       data.edit ?? false,
       data.del ?? false
     )

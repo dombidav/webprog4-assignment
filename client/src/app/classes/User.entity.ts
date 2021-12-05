@@ -34,7 +34,7 @@ export class User implements IUser{
   ) {}
 
 
-  static factory(user: IUser) {
+  static factory(user: IUser|any) {
     return new User(
       user.id ?? '',
       user.name ?? '',

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
-import { ReadPage } from './read.page'
+import { ProjectReadPage } from './project-read.page'
 
 const routes: Routes = [
   {
     path: '',
-    component: ReadPage
+    component: ProjectReadPage
   }
 ]
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ],
 })
-export class ReadPageRoutingModule {}
+export class ProjectReadPageRoutingModule {}

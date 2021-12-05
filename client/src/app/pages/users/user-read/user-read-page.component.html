@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p-card *ngIf="user">
+    <ng-template pTemplate="header">
+      <div class="px-4 pt-3">
+        <h3>{{ user?.name }}</h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="ion-padding">
+        <p>
+          <strong>Name:</strong> {{ user.name }}
+        </p>
+        <p>
+          <strong>Email:</strong> {{ user.email }}
+        </p>
+        <p>
+          <strong>Created:</strong> {{ user.created_at | date: 'yyyy-MM-dd hh:mm' }}
+        </p>
+      </div>
+    </ng-template>
+  </p-card>
+</ion-content>

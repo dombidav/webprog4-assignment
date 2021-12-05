@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
-    loadChildren: () => import('./read/read.module').then( m => m.ReadPageModule)
+    loadChildren: () => import('./team-read/team-read.module').then(m => m.TeamReadPageModule)
   }
 ]
 

@@ -40,7 +40,7 @@ export class TeamsPage implements OnInit, OnDestroy {
 
   // section logic
   openNewDialog() {
-    this.item = new Team(null, '', null, this.authService.activeUser.id, [], null, null)
+    this.item = new Team(null, '', null, this.authService.activeUser.id, [], null, null, [])
     this.submitted = false
     this.itemDialog = true
   }

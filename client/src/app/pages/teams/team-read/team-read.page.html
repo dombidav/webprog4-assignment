@@ -1,0 +1,155 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- section details -->
+  <p-card *ngIf="team">
+    <ng-template pTemplate="header">
+      <div class="px-4 pt-3">
+        <h3>{{ team?.name }}</h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="ion-padding">
+        <p>
+          <strong>Name:</strong> {{ team.name }}
+        </p>
+        <p>
+          <strong>Created:</strong> {{ team.created_at | date: 'yyyy-MM-dd hh:mm' }}
+        </p>
+        <p>
+          <strong>Team leader: </strong> <a href="user/{{team.user?.id}}">{{ team.user?.name }}</a> (<a
+          href="mailto:{{team.user?.email}}">{{ team.user?.email }}</a>)
+        </p>
+      </div>
+    </ng-template>
+  </p-card>
+  <!-- section members -->
+  <p-card *ngIf="team">
+    <ng-template pTemplate="header">
+      <div class="px-4 pt-3">
+        <h3>Members</h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="ion-padding">
+        <table class="w-100">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th class="d-none d-md-block">Registered</th>
+            <th>Operations</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{ team.user?.name }}</td>
+            <td>{{ team.user?.email }}</td>
+            <td class="d-none d-md-block">{{ team.user?.created_at | date: 'yyyy-MM-dd hh:mm' }}</td>
+            <td>
+              <button class="p-button-rounded p-button-danger p-button-outlined" icon="pi pi-times" pButton
+                      type="button"></button>
+            </td>
+          </tr>
+          <tr *ngFor="let member of team.users">
+            <td><a href="user/{{member.id}}">{{ member.name }}</a></td>
+            <td><a href="mailto:{{member.email}}">{{ member.email }}</a></td>
+            <td class="d-none d-md-block">{{ member.created_at | date: 'yyyy-MM-dd hh:mm' }}</td>
+            <td>
+              <button (click)="removeMember(member.email)" class="p-button-rounded p-button-danger p-button-outlined" icon="pi pi-times"
+                      pButton
+                      type="button"></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="pt-3" style="text-align: center">
+          <button (click)="showDialog()" class="p-button-success p-button-outlined" icon="pi pi-plus" label="Add" pButton
+                  type="button"></button>
+        </div>
+      </div>
+    </ng-template>
+  </p-card>
+<!-- section projects -->
+  <p-card *ngIf="team">
+    <ng-template pTemplate="header">
+      <div class="px-4 pt-3">
+        <h3>Projects</h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="ion-padding">
+        <table class="w-100">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Short Name</th>
+            <th class="d-none d-md-block">Created</th>
+            <th>Operations</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let project of team.projects">
+            <td><a href="projects/{{project.id}}">{{ project.name }}</a></td>
+            <td>{{project.shortname}}</td>
+            <td class="d-none d-md-block">{{ project.created_at | date: 'yyyy-MM-dd hh:mm' }}</td>
+            <td>
+              <button pButton type="button"
+                      *ngIf="team.edit"
+                      (click)="showEditProjectDialog(project)"
+                      class="p-button-rounded p-button-warning p-button-outlined" icon="pi pi-pencil">
+              </button> &nbsp;&nbsp;
+              <button pButton type="button"
+                      *ngIf="team.del"
+                      (click)="removeProject(project)"
+                      class="p-button-rounded p-button-danger p-button-outlined" icon="pi pi-times">
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="pt-3" style="text-align: center">
+          <button (click)="showAddProjectDialog()" class="p-button-success p-button-outlined" icon="pi pi-plus" label="Add" pButton
+                  type="button"></button>
+        </div>
+      </div>
+    </ng-template>
+  </p-card>
+
+  <!-- section add-member-dialog -->
+  <p-dialog [(visible)]="itemDialog" [modal]="true" [style]="{width: '450px'}" header="Add user" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input [(ngModel)]="input" autofocus id="email" pInputText required type="text"/>
+        <small *ngIf="submitted && !input" class="p-error">Email is required.</small>
+      </div>
+      <p-divider></p-divider>
+      <p-button (click)="hideDialog()" class="p-button-text" icon="pi pi-times" label="Cancel"></p-button>
+      <p-button (click)="saveMember()" class="p-button-text" icon="pi pi-check" label="Save"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <!-- section add-project-dialog -->
+  <p-dialog [(visible)]="projectDialog" [modal]="true" [style]="{width: '450px'}" header="{{ project.id ? 'Edit' : 'Add' }} Project" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <div class="p-field">
+        <label for="name">Name</label>
+        <input [(ngModel)]="project.name" autofocus id="name" pInputText required type="text"/>
+        <small *ngIf="submitted && !project.name" class="p-error">Name is required.</small>
+      </div>
+      <div class="p-field">
+        <label for="short-name">Short name</label>
+        <input [(ngModel)]="project.shortname" autofocus id="short-name" pInputText required type="text"/>
+        <small *ngIf="submitted && !project.shortname" class="p-error">Short name is required.</small>
+      </div>
+      <p-divider></p-divider>
+      <p-button (click)="hideDialog()" class="p-button-text" icon="pi pi-times" label="Cancel"></p-button>
+      <p-button (click)="saveProject()" class="p-button-text" icon="pi pi-check" label="Save"></p-button>
+    </ng-template>
+  </p-dialog>
+</ion-content>
