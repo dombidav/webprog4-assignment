@@ -66,8 +66,16 @@
             {{item.created_at | date: 'yyyy-MM-dd HH:mm'}}
           </td>
           <td>
-            <button (click)="openEditDialog(item)" class="p-button-rounded p-button-success p-mr-2" icon="pi pi-pencil" pButton type="button"></button>
-            <button (click)="deleteItem(item)" class="p-button-rounded p-button-warning" icon="pi pi-trash" pButton type="button"></button>
+            <button pButton type="button"
+                    *ngIf="item.edit"
+                    (click)="openEditDialog(item)"
+                    class="p-button-rounded p-button-success p-mr-2"
+                    icon="pi pi-pencil"></button>
+            <button pButton type="button"
+                    *ngIf="item.del"
+                    (click)="deleteItem(item)"
+                    class="p-button-rounded p-button-warning"
+                    icon="pi pi-trash"></button>
           </td>
         </tr>
       </ng-template>

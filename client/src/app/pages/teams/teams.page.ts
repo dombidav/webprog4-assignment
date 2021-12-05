@@ -22,7 +22,7 @@ export class TeamsPage implements OnInit, OnDestroy {
     private readonly itemService: TeamService,
     private readonly messageService: MessageService,
     private readonly confirmationService: ConfirmationService,
-    private readonly authService: AuthService,
+    public readonly authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -31,11 +31,13 @@ export class TeamsPage implements OnInit, OnDestroy {
 
   init() {
     if(this.items$) this.items$.unsubscribe()
-    this.items$ = this.itemService.browse().subscribe(res => this.items = res)
+    this.items$ = this.itemService.browse().subscribe(res => {
+      this.items = res
+    })
   }
 
   openNewDialog() {
-    this.item = new Team(null, '', null, this.authService.activeUser.id, [],null, null)
+    this.item = new Team(null, '', null, this.authService.activeUser.id, [], null, null)
     this.submitted = false
     this.itemDialog = true
   }

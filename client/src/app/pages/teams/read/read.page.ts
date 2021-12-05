@@ -1,14 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {ConfirmationService, MessageService} from 'primeng/api';
-import {Subscription} from "rxjs";
-import {Team} from "../../../classes/Team.entity";
-import {TeamService} from "../team.service";
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { ConfirmationService, MessageService } from 'primeng/api'
+import { Subscription } from 'rxjs'
+import { Team } from '../../../classes/Team.entity'
+import { TeamService } from '../team.service'
 
 @Component({
   selector: 'app-read',
   templateUrl: './read.page.html',
-  styleUrls: ['./read.page.scss'],
+  styleUrls: [ './read.page.scss' ],
 })
 export class ReadPage implements OnInit, OnDestroy {
   // section vars
@@ -27,7 +27,7 @@ export class ReadPage implements OnInit, OnDestroy {
     private readonly message: MessageService,
     private readonly confirm: ConfirmationService,
   ) {
-    this.teamId$ = this.route.params.subscribe(params => this.teamId = params['id']);
+    this.teamId$ = this.route.params.subscribe(params => this.teamId = params.id)
   }
 
   ngOnInit() {
@@ -40,7 +40,7 @@ export class ReadPage implements OnInit, OnDestroy {
       message: 'Are you sure you want to remove this member?',
       accept: () => {
         this.team$ = this.teamService.removeMember(this.teamId, email).subscribe(res => {
-          this.message.add({severity: 'success', summary: 'Success', detail: 'Member removed'})
+          this.message.add({ severity: 'success', summary: 'Success', detail: 'Member removed' })
           this.team = res.data
         })
       }
@@ -48,8 +48,8 @@ export class ReadPage implements OnInit, OnDestroy {
   }
   // section destruct
   ngOnDestroy() {
-    this.teamId$?.unsubscribe();
-    this.team$?.unsubscribe();
+    this.teamId$?.unsubscribe()
+    this.team$?.unsubscribe()
   }
 
   showDialog() {
@@ -67,7 +67,7 @@ export class ReadPage implements OnInit, OnDestroy {
     if(this.email) {
       this.team$ = this.teamService.addMember(this.teamId, this.email).subscribe(res => {
         this.team = res.data
-        this.message.add({severity: 'success', summary: 'Success', detail: 'Member added'})
+        this.message.add({ severity: 'success', summary: 'Success', detail: 'Member added' })
       })
       this.hideDialog()
     }

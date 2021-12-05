@@ -6,6 +6,7 @@ import { IUser } from '../../classes/User.entity'
 import { Observable, Subscriber } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { IResponse } from '../../classes/IResponse.generic'
+import { fromPromise } from 'rxjs/internal-compatibility'
 
 /** Service responsible for Authorization and authentication */
 @Injectable({
@@ -13,12 +14,14 @@ import { IResponse } from '../../classes/IResponse.generic'
 })
 export class AuthService {
 
-  public activeUser: IUser | null = null
-
+  // section vars
   public user$: Observable<IUser>;
+  public activeUser: IUser | null = null
   private userObserver: Subscriber<IUser>;
   private tokenObject: IToken;
+  private permissions: { ability: string, model: 'Task'|'Project'|'User'|'Team', modelId }[] = []
 
+  // section init
   /**
    * Constructor
    * @param rest RestService Responsible for HTTP calls
@@ -34,6 +37,7 @@ export class AuthService {
     })
   }
 
+  // section logic
   /**
    * Logs in the user
    * @param email The email of the user
@@ -71,6 +75,21 @@ export class AuthService {
         })
       )
     }
+  }
+
+  can(ability: string, model: 'Task'|'Project'|'User'|'Team', modelId) {
+    if(!this.activeUser) return fromPromise(Promise.resolve(false))
+    if(this.permissions.includes({ ability, model, modelId })) return fromPromise(Promise.resolve(true))
+
+    return this.rest.post<IResponse<boolean>>('can', {
+      email: this.activeUser.email,
+      ability,
+      model,
+      modelId
+    }).pipe(map(res => {
+      this.permissions.push({ ability, model, modelId })
+      return res.data
+    }))
   }
 
   /** Get currently logged in user data */

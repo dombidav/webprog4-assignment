@@ -41,14 +41,14 @@ export class TeamService {
   }
 
   addMember(teamId: string, email: string) {
-    return this.rest.post<IResponse<ITeam>>(`teams/membership`, {
+    return this.rest.post<IResponse<ITeam>>('teams/membership', {
       email: email,
       team: teamId,
     })
   }
 
   removeMember(teamId: string, email: string) {
-    return this.rest.delete<IResponse<ITeam>>(`teams/membership`, {
+    return this.rest.delete<IResponse<ITeam>>('teams/membership', {
       email: email,
       team: teamId,
     })
