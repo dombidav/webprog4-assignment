@@ -1,27 +1,27 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { TeamService } from './team.service'
-import { Team } from '../../classes/Team.entity'
-import { ConfirmationService, MessageService } from 'primeng/api'
+import { User } from '../../classes/User.entity'
 import { Subscription } from 'rxjs'
+import { ConfirmationService, MessageService } from 'primeng/api'
 import { AuthService } from '../../shared/services/auth.service'
+import { UserService } from './user.service'
 
 @Component({
-  selector: 'app-teams',
-  templateUrl: './teams.page.html',
-  styleUrls: [ './teams.page.scss' ],
+  selector: 'app-users',
+  templateUrl: './users.page.html',
+  styleUrls: [ './users.page.scss' ],
 })
-export class TeamsPage implements OnInit, OnDestroy {
+export class UsersPage implements OnInit, OnDestroy {
   // section vars
   selectedItems: any[]
-  items: Team[]
+  items: User[]
   itemDialog = false
-  item: Team
+  item: User
   submitted = false
   private items$: Subscription
 
   // section init
   constructor(
-    private readonly itemService: TeamService,
+    private readonly itemService: UserService,
     private readonly messageService: MessageService,
     private readonly confirmationService: ConfirmationService,
     public readonly authService: AuthService,
@@ -39,13 +39,6 @@ export class TeamsPage implements OnInit, OnDestroy {
   }
 
   // section logic
-  openNewDialog() {
-    this.item = new Team(null, '', null, this.authService.activeUser.id, [], null, null)
-    this.submitted = false
-    this.itemDialog = true
-  }
-
-
   deleteSelectedItems() {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to delete the selected items?',
@@ -60,13 +53,13 @@ export class TeamsPage implements OnInit, OnDestroy {
     })
   }
 
-  openEditDialog(item: Team) {
+  openEditDialog(item: User) {
     this.item = item
     this.submitted = false
     this.itemDialog = true
   }
 
-  deleteItem(item: Team) {
+  deleteItem(item: User) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to delete this item?',
       accept: () => {
@@ -91,10 +84,8 @@ export class TeamsPage implements OnInit, OnDestroy {
         this.itemDialog = false
       })
     } else {
-      this.itemService.add(this.item).subscribe(() => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Item created' })
-        this.itemDialog = false
-      })
+      this.messageService.add({ severity: 'danger', summary: 'Error', detail: 'Unknown Item' })
+      this.itemDialog = false
     }
     this.init()
   }

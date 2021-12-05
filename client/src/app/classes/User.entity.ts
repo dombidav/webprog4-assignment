@@ -1,7 +1,8 @@
 import { ITimestamp } from './ITimestamp.interface'
+import { ICrud } from './ICrud.interface'
 
 /** Used as a type when making a request to the API */
-export interface IUser extends ITimestamp{
+export interface IUser extends ITimestamp, ICrud{
   id: string
   name: string
   email: string
@@ -18,6 +19,8 @@ export class User implements IUser{
    * @param password The password of the user
    * @param created_at
    * @param updated_at
+   * @param edit
+   * @param del
    */
   constructor(
     public id: string,
@@ -25,18 +28,22 @@ export class User implements IUser{
     public email: string,
     public password: string,
     public created_at: string,
-    public updated_at: string
+    public updated_at: string,
+    public edit: boolean,
+    public del: boolean
   ) {}
 
 
   static factory(user: IUser) {
     return new User(
-      user.id,
-      user.name,
-      user.email,
-      user.password,
-      user.created_at,
-      user.updated_at
+      user.id ?? '',
+      user.name ?? '',
+      user.email ?? '',
+      user.password ?? '',
+      user.created_at ?? (new Date()).toISOString(),
+      user.updated_at ?? (new Date()).toISOString(),
+      user.edit ?? false,
+      user.del ?? false
     )
   }
 }

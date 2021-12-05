@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card">
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <button (click)="deleteSelectedItems()" [disabled]="!selectedItems || !selectedItems.length" class="p-button-danger" icon="pi pi-trash" label="Delete" pButton pRipple></button>
+      </ng-template>
+
+      <ng-template pTemplate="right">
+        <button class="p-button-help" icon="pi pi-upload" label="Export" pButton pRipple></button>
+      </ng-template>
+    </p-toolbar>
+
+    <p-table #dt
+             [(selection)]="selectedItems"
+             [globalFilterFields]="['name', 'user.name']"
+             [paginator]="true"
+             [rowHover]="true"
+             [rows]="10"
+             [showCurrentPageReport]="true"
+             [value]="items"
+             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+             dataKey="id"
+             responsiveLayout="scroll">
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex p-ai-center p-jc-between">
+          <h5 class="p-m-0">Manage Users</h5>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <!--suppress TypeScriptUnresolvedVariable -->
+            <input (input)="dt.filterGlobal($event.target.value, 'contains')" pInputText placeholder="Search..." type="text" />
+          </span>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="user.name">Owner <p-sortIcon field="user.name"></p-sortIcon></th>
+          <th pSortableColumn="created">Created <p-sortIcon field="created"></p-sortIcon></th>
+          <th> Operations </th>
+        </tr>
+      </ng-template>
+
+      <ng-template let-item pTemplate="body">
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="item"></p-tableCheckbox>
+          </td>
+          <td>
+            <a [routerLink]="['/teams/' + item.id]" [replaceUrl]="true">{{item.name}}</a>
+          </td>
+          <td>
+            <a [routerLink]="['/users', item.user.id]" [replaceUrl]="true">{{item.user.name}}</a>
+          </td>
+          <td>
+            {{item.created_at | date: 'yyyy-MM-dd HH:mm'}}
+          </td>
+          <td>
+            <button pButton type="button"
+                    *ngIf="item.edit"
+                    (click)="openEditDialog(item)"
+                    class="p-button-rounded p-button-success p-mr-2"
+                    icon="pi pi-pencil"></button>
+            <button pButton type="button"
+                    *ngIf="item.del"
+                    (click)="deleteItem(item)"
+                    class="p-button-rounded p-button-warning"
+                    icon="pi pi-trash"></button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+          In total there are {{items ? items.length : 0 }} teams.
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <p-dialog [(visible)]="itemDialog" [modal]="true" [style]="{width: '450px'}" header="Item Details" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <div class="p-field">
+        <label for="name">Name</label>
+        <input [(ngModel)]="item.name" autofocus id="name" pInputText required type="text" />
+        <small *ngIf="submitted && !item.name" class="p-error">Name is required.</small>
+      </div>
+      <p-divider></p-divider>
+      <p-button (click)="hideDialog()" class="p-button-text" icon="pi pi-times" label="Cancel"></p-button>
+      <p-button (click)="saveItem()" class="p-button-text" icon="pi pi-check" label="Save"></p-button>
+    </ng-template>
+  </p-dialog>
+</ion-content>

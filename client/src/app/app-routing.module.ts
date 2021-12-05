@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'teams',
     loadChildren: () => import('./pages/teams/teams.module').then( m => m.TeamsPageModule)
   },
+  {
+    path: 'users',
+    loadChildren: () => import('./pages/users/users.module').then( m => m.UsersPageModule)
+  },
 ]
 
 /** Handles first level routing and preloading strategies */

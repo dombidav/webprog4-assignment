@@ -2,44 +2,33 @@ import { Injectable } from '@angular/core'
 import { RestService } from 'src/app/shared/services/rest.service'
 import { IResponse } from '../../classes/IResponse.generic'
 import { ITeam, Team } from '../../classes/Team.entity'
-import { map } from 'rxjs/operators'
-import { Observable } from 'rxjs'
+import { CrudService } from '../../classes/CrudService.generic'
 
 @Injectable({
   providedIn: 'root'
 })
-export class TeamService {
+export class TeamService extends CrudService<ITeam, Team>{
 
+  // section init
   constructor(
-    private readonly rest: RestService
-  ) { }
+    rest: RestService,
+  ) { super(rest) }
 
-  browse(): Observable<Team[]> {
-    return this.rest.get<IResponse<ITeam[]>>('teams').pipe(map(res => res.data.map(Team.factory)))
+  get factory() {
+    return Team.factory
   }
 
-  read(id: string) {
-    return this.rest.get<IResponse<ITeam>>(`teams/${id}`).pipe(map(res => Team.factory(res.data)))
+  // section implementations
+  getBody = (entity: Team) => ({
+    name: entity.name,
+    user_id: entity.user_id
+  });
+
+  get uri(): string {
+    return 'teams'
   }
 
-  edit(team: Team) {
-    return this.rest.put(`teams/${team.id}`, {
-      name: team.name,
-      user_id: team.user_id
-    })
-  }
-
-  add(team: Team) {
-    return this.rest.post('teams', {
-      name: team.name,
-      user_id: team.user_id
-    })
-  }
-
-  delete(id) {
-    return this.rest.delete(`teams/${id}`)
-  }
-
+  // section logic
   addMember(teamId: string, email: string) {
     return this.rest.post<IResponse<ITeam>>('teams/membership', {
       email: email,

@@ -19,6 +19,8 @@ import { AuthInterceptor } from './http/interceptors/auth.interceptor'
 import { IonicStorageModule } from '@ionic/storage-angular'
 import { NgModule } from '@angular/core'
 import { RouteReuseStrategy } from '@angular/router'
+import { TeamService } from './pages/teams/team.service'
+import { UserService } from './pages/users/user.service'
 
 /**
  * Initializes a new translation file loader through http
@@ -69,6 +71,8 @@ export function createTranslateLoader(http: HttpClient) {
       multi: true,
       deps: [ RedirectService, StorageService ]
     },
+    TeamService,
+    UserService
   ],
   bootstrap: [ AppComponent ],
 })
