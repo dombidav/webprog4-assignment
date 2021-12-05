@@ -1,0 +1,25 @@
+* text=lf
+
+*.ts text
+*.js text
+*.json text
+*.css text
+*.scss text
+*.md text
+*.html text
+*.yml text
+*.yaml text
+*.xml text
+*.php text
+*.py text
+*.lock text
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.tiff binary
+*.tif binary
+*.ico binary

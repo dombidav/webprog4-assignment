@@ -57,10 +57,10 @@
             <p-tableCheckbox [value]="item"></p-tableCheckbox>
           </td>
           <td>
-            <a [routerLink]="['/teams', item.id]">{{item.name}}</a>
+            <a [routerLink]="['/teams/' + item.id]" [replaceUrl]="true">{{item.name}}</a>
           </td>
           <td>
-            <a [routerLink]="['/users', item.user.id]">{{item.user.name}}</a>
+            <a [routerLink]="['/users', item.user.id]" [replaceUrl]="true">{{item.user.name}}</a>
           </td>
           <td>
             {{item.created_at | date: 'yyyy-MM-dd HH:mm'}}

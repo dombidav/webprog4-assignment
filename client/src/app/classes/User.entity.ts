@@ -29,4 +29,14 @@ export class User implements IUser{
   ) {}
 
 
+  static factory(user: IUser) {
+    return new User(
+      user.id,
+      user.name,
+      user.email,
+      user.password,
+      user.created_at,
+      user.updated_at
+    )
+  }
 }

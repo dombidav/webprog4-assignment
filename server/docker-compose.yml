@@ -13,7 +13,8 @@ services:
       MYSQL_PASS: ''
     volumes:
       - ./datavolume:/var/lib/mysql
-  
+
+
   server:
     container_name: web4_server
     build:

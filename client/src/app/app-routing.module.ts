@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'teams',
     loadChildren: () => import('./pages/teams/teams.module').then( m => m.TeamsPageModule)
-  }
+  },
 ]
 
 /** Handles first level routing and preloading strategies */

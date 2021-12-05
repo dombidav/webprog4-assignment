@@ -21,6 +21,8 @@ class TeamController extends ResourceController
 
     protected function read(Team $team): JsonResponse
     {
+        $team->user = $team->user()->first();
+        $team->users = $team->users()->get();
         return response()->json(['data' => $team]);
     }
 
@@ -56,15 +58,45 @@ class TeamController extends ResourceController
         return response()->json(['original' => $team]);
     }
 
+    protected function addMemberByEmail(): JsonResponse
+    {
+        /** @var User $user */
+        $user = User::where('email', request('email'))->first();
+        /** @var Team $team */
+        $team = Team::where('id', request('team'))->first();
+        if(!$user) abort(404, 'This email does not exists');
+        if(!$team) abort(404, 'This team does not exists');
+        return $this->addMember($team, $user);
+    }
+
+    protected function removeMemberByEmail(): JsonResponse
+    {
+        /** @var User $user */
+        $user = User::where('email', request()->query('email'))->first();
+        /** @var Team $team */
+        $team = Team::where('id', request()->query('team'))->first();
+        if(!$user) abort(404, 'This email does not exists');
+        if(!$team) abort(404, 'This team does not exists');
+        return $this->removeMember($team, $user);
+    }
+
     protected function addMember(Team $team, User $user): JsonResponse
     {
         $team->users()->attach($user);
         $team->save();
+        $team->refresh();
+        $team->user = $team->user()->first();
+        $team->users = $team->users()->get();
+        return response()->json(['data' => $team]);
     }
 
     protected function removeMember(Team $team, User $user): JsonResponse
     {
         $team->users()->detach($user);
         $team->save();
+        $team->refresh();
+        $team->user = $team->user()->first();
+        $team->users = $team->users()->get();
+        return response()->json(['data' => $team]);
     }
 }

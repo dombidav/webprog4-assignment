@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TeamsPage
+  },
+  {
+    path: ':id',
+    loadChildren: () => import('./read/read.module').then( m => m.ReadPageModule)
   }
 ]
 

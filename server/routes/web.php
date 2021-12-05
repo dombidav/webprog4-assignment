@@ -18,10 +18,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('login', 'AuthController@login');
 
     $router->get('profile', 'UserController@profile');
+    $router->post('teams/membership', 'TeamController@addMemberByEmail');
+    $router->delete('teams/membership', 'TeamController@removeMemberByEmail');
 });
 Routing::ApiRoutes('users', UserController::class);
 /** team_id / user_email */
-$router->post('teams/membership/{id}/{email}', 'TeamController@addMember');
-$router->delete('teams/membership/{id}/{email}', 'TeamController@removeMember');
 Routing::ApiRoutes('teams', TeamController::class);
 Routing::ApiRoutes('projects', ProjectController::class);

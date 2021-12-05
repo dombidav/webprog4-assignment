@@ -40,4 +40,17 @@ export class TeamService {
     return this.rest.delete(`teams/${id}`)
   }
 
+  addMember(teamId: string, email: string) {
+    return this.rest.post<IResponse<ITeam>>(`teams/membership`, {
+      email: email,
+      team: teamId,
+    })
+  }
+
+  removeMember(teamId: string, email: string) {
+    return this.rest.delete<IResponse<ITeam>>(`teams/membership`, {
+      email: email,
+      team: teamId,
+    })
+  }
 }

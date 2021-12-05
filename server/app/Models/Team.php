@@ -12,8 +12,8 @@ use Illuminate\Support\Collection;
 /**
  * @property string name,
  * @property Collection users,
- * @property string leader_id
- * @property User leader
+ * @property string user_id
+ * @property User user
  */
 class Team extends Model
 {
