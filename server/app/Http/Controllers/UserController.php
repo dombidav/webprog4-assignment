@@ -17,17 +17,17 @@ class UserController extends ResourceController
 
     public function profile(): JsonResponse
     {
-        return response()->json(['data' => Auth::user()]);
+        return response()->json(['data' => Auth::user()->include(['teams'])]);
     }
 
     protected function browse(): JsonResponse
     {
-        return response()->json(['data' =>  User::all()]);
+        return response()->json(['data' =>  User::allWith(['teams'])->map(fn(User $user) => $user->withPerm())]);
     }
 
     protected function read(User $user): JsonResponse
     {
-        return response()->json(['data' => $user]);
+        return response()->json(['data' => $user->include(['teams'])->withPerm()]);
     }
 
     protected function edit(User $user): JsonResponse
@@ -47,7 +47,7 @@ class UserController extends ResourceController
         $user->update($validated);
         $user->save();
 
-        return response()->json(['original' => $original, 'updated' => $user]);
+        return response()->json(['original' => $original, 'updated' => $user->include(['teams'])->withPerm()]);
     }
 
     protected function add(): JsonResponse
@@ -58,7 +58,7 @@ class UserController extends ResourceController
                 'email' => ['required', 'email', Rule::unique('users', 'email')],
                 'password' => ['required', 'string', 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 'min:8', 'confirmed'] //https://stackoverflow.com/a/31549892
             ])
-        )], 201);
+        )->include(['teams'])->withPerm()], 201);
     }
 
     protected function destroy(User $user): JsonResponse

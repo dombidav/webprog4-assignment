@@ -15,21 +15,21 @@ class ProjectController extends ResourceController
 
     protected function browse(): JsonResponse
     {
-        return response()->json(['data' => Project::all()]);
+        return response()->json(['data' => Project::allWith(['team'])->map(fn(Project $project) => $project->withPerm())]);
     }
 
     protected function read(Project $project): JsonResponse
     {
-        return response()->json(['data' => $project]);
+        return response()->json(['data' => $project->include(['tasks', 'team'])->withPerm()]);
     }
 
     protected function edit(Project $project): JsonResponse
     {
         $original = $project;
 
-        $validated = request()->validate([
-            'name' => ['min:3', 'regex:[a-zA-Z0-9-_ ]+'],
-            'shortname' => ['min:2', 'regex:[a-zA-Z0-9-_]+'],
+        $validated = $this->validation([
+            'name' => ['min:3', 'regex:/[a-zA-Z0-9-_ ]+/'],
+            'shortname' => ['min:2', 'regex:/[a-zA-Z0-9-_]+/'],
             'description' => [],
             'team_id' => [Rule::exists('teams', 'id')]
         ]);
@@ -42,9 +42,9 @@ class ProjectController extends ResourceController
 
     protected function add(): JsonResponse
     {
-        return response()->json(['data' => Project::create(request()->validate([
-               'name' => ['required', 'min:3', 'regex:[a-zA-Z0-9-_ ]+'],
-               'shortname' => ['required', 'min:2', 'regex:[a-zA-Z0-9-_]+'],
+        return response()->json(['data' => Project::create($this->validation([
+               'name' => ['required', 'min:3', 'regex:/[a-zA-Z0-9-_ ]+/'],
+               'shortname' => ['required', 'min:2', 'regex:/[a-zA-Z0-9-_]+/'],
                'description' => [],
                'team_id' => ['required', Rule::exists('teams', 'id')]
             ])

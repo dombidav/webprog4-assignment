@@ -1,5 +1,7 @@
 import { ITimestamp } from './ITimestamp.interface'
 import { ICrud } from './ICrud.interface'
+import {Team} from "./Team.entity";
+import {Task} from "./Task.entity";
 
 export interface IProject extends ITimestamp, ICrud{
   id: string
@@ -7,6 +9,8 @@ export interface IProject extends ITimestamp, ICrud{
   description: string
   shortname: string
   team_id: string
+  team: Team
+  tasks: Task[]
 }
 
 export class Project implements IProject {
@@ -16,6 +20,8 @@ export class Project implements IProject {
     public description: string,
     public shortname: string,
     public team_id: string,
+    public team: Team,
+    public tasks: Task[],
     public created_at: string,
     public updated_at: string,
     public edit: boolean = false,
@@ -29,6 +35,8 @@ export class Project implements IProject {
       data.description ?? '',
       data.shortname ?? '',
       data.team_id ?? '',
+      data.team ?? Team.factory({}),
+      data.tasks ?? [],
       data.created_at ?? (new Date()).toISOString(),
       data.updated_at ?? (new Date()).toISOString(),
       data.edit ?? false,

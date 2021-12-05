@@ -22,6 +22,7 @@ import { RouteReuseStrategy } from '@angular/router'
 import { TeamService } from './pages/teams/team.service'
 import { UserService } from './pages/users/user.service'
 import { ProjectService } from './pages/projects/project.service'
+import {TaskService} from "./pages/tasks/task.service";
 
 /**
  * Initializes a new translation file loader through http
@@ -75,6 +76,7 @@ export function createTranslateLoader(http: HttpClient) {
     TeamService,
     UserService,
     ProjectService,
+    TaskService,
   ],
   bootstrap: [ AppComponent ],
 })

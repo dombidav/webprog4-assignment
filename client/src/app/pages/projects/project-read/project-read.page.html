@@ -1,9 +1,234 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>project-read</ion-title>
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- section Project Details -->
+  <p-card *ngIf="project">
+    <ng-template pTemplate="header">
+      <div class="px-4 pt-3">
+        <h3>{{ project.name }}</h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div class="ion-padding">
+        <p>
+          <strong>UUID:</strong> {{ project.id }}
+        </p>
+        <p>
+          <strong>Name:</strong> {{ project.name }} ({{project.shortname}})
+        </p>
+        <p>
+          <strong>Created:</strong> {{ project.created_at | date: 'yyyy-MM-dd hh:mm' }}
+        </p>
+        <p>
+          <strong>Description:</strong> {{ project.description }}
+        </p>
+        <p>
+          <strong>Team:</strong> <a routerLink="{{'../../teams/' + project.team_id}}">{{ project.team.name }}</a>
+        </p>
+      </div>
+    </ng-template>
+  </p-card>
 
+  <!-- section Project Tasks -->
+  <p-card *ngIf="project">
+    <ng-template pTemplate="header">
+      <div class="px-4 pt-3">
+        <h3>Tasks</h3>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div>
+        <p-button
+          (click)="openAddTaskDialog()"
+          icon="pi pi-plus"
+          label="Add Task"
+          class="p-button-success">
+        </p-button>
+      </div>
+      <div class="row">
+        <!-- section First Drag & Drop -->
+        <div class="col-12 col-md-6 col-lg-3 drag-column" pDroppable="taskDrag" (onDrop)="drop(0)">
+          <h3 class="col-head">TODO</h3>
+          <div *ngFor="let task of project.tasks">
+            <div *ngIf="task.status == 0" pDraggable="taskDrag" (onDragStart)="dragStart(task)" (onDragEnd)="dragEnd()">
+              <p-card>
+                <ng-template pTemplate="header">
+                  <div class="px-4 pt-3">
+                    <h3>{{ task.name }}</h3>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                  <div class="ion-padding">
+                    <p>
+                      <strong>UUID:</strong> {{ task.id }}
+                    </p>
+                    <p>
+                      <strong>Name:</strong> {{ task.name }}
+                    </p>
+                    <p>
+                      <strong>Created:</strong> {{ task.created_at | date: 'yyyy-MM-dd hh:mm' }}
+                    </p>
+                    <p>
+                      <strong>Description:</strong> {{ task.description }}
+                    </p>
+                    <p>
+                      <strong>Status:</strong> {{ task.status }}
+                    </p>
+                    <p>
+                      <strong>Assigned To:</strong> <a routerLink="{{'../../users/' + task.assignee?.id}}">{{ task.assignee?.name }}</a>
+                    </p>
+                    <p>
+                      <strong>Report To:</strong> <a routerLink="{{'../../users/' + task.reporter?.id}}">{{ task.reporter?.name }}</a>
+                    </p>
+                  </div>
+                </ng-template>
+              </p-card>
+              <p-divider></p-divider>
+            </div>
+          </div>
+        </div>
+        <!-- section Second Drag & Drop -->
+        <div class="col-12 col-md-6 col-lg-3 drag-column" pDroppable="taskDrag" (onDrop)="drop(1)">
+          <h3 class="col-head">IN PROGRESS</h3>
+          <div *ngFor="let task of project.tasks">
+            <div *ngIf="task.status == 1" pDraggable="taskDrag" (onDragStart)="dragStart(task)" (onDragEnd)="dragEnd()">
+              <p-card>
+                <ng-template pTemplate="header">
+                  <div class="px-4 pt-3">
+                    <h3>{{ task.name }}</h3>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                  <div class="ion-padding">
+                    <p>
+                      <strong>UUID:</strong> {{ task.id }}
+                    </p>
+                    <p>
+                      <strong>Name:</strong> {{ task.name }}
+                    </p>
+                    <p>
+                      <strong>Created:</strong> {{ task.created_at | date: 'yyyy-MM-dd hh:mm' }}
+                    </p>
+                    <p>
+                      <strong>Description:</strong> {{ task.description }}
+                    </p>
+                    <p>
+                      <strong>Status:</strong> {{ task.status }}
+                    </p>
+                    <p>
+                      <strong>Assigned To:</strong> <a routerLink="{{'../../users/' + task.assignee?.id}}">{{ task.assignee?.name }}</a>
+                    </p>
+                    <p>
+                      <strong>Report To:</strong> <a routerLink="{{'../../users/' + task.reporter?.id}}">{{ task.reporter?.name }}</a>
+                    </p>
+                  </div>
+                </ng-template>
+              </p-card>
+              <p-divider></p-divider>
+            </div>
+          </div>
+        </div>
+        <!-- section Third Drag & Drop -->
+        <div class="col-12 col-md-6 col-lg-3 drag-column" pDroppable="taskDrag" (onDrop)="drop(2)">
+          <h3 class="col-head">REVIEW</h3>
+          <div *ngFor="let task of project.tasks">
+            <div *ngIf="task.status == 2" pDraggable="taskDrag" (onDragStart)="dragStart(task)" (onDragEnd)="dragEnd()">
+              <p-card>
+                <ng-template pTemplate="header">
+                  <div class="px-4 pt-3">
+                    <h3>{{ task.name }}</h3>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                  <div class="ion-padding">
+                    <p>
+                      <strong>UUID:</strong> {{ task.id }}
+                    </p>
+                    <p>
+                      <strong>Name:</strong> {{ task.name }}
+                    </p>
+                    <p>
+                      <strong>Created:</strong> {{ task.created_at | date: 'yyyy-MM-dd hh:mm' }}
+                    </p>
+                    <p>
+                      <strong>Description:</strong> {{ task.description }}
+                    </p>
+                    <p>
+                      <strong>Status:</strong> {{ task.status }}
+                    </p>
+                    <p>
+                      <strong>Assigned To:</strong> <a routerLink="{{'../../users/' + task.assignee?.id}}">{{ task.assignee?.name }}</a>
+                    </p>
+                    <p>
+                      <strong>Report To:</strong> <a routerLink="{{'../../users/' + task.reporter?.id}}">{{ task.reporter?.name }}</a>
+                    </p>
+                  </div>
+                </ng-template>
+              </p-card>
+              <p-divider></p-divider>
+            </div>
+          </div>
+        </div>
+        <!-- section Fourth Drag & Drop -->
+        <div class="col-12 col-md-6 col-lg-3 drag-column" pDroppable="taskDrag" (onDrop)="drop(3)">
+          <h3 class="col-head">DONE</h3>
+          <div *ngFor="let task of project.tasks">
+            <div *ngIf="task.status == 3" pDraggable="taskDrag" (onDragStart)="dragStart(task)" (onDragEnd)="dragEnd()">
+              <p-card>
+                <ng-template pTemplate="header">
+                  <div class="px-4 pt-3">
+                    <h3>{{ task.name }}</h3>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                  <div class="ion-padding">
+                    <p>
+                      <strong>UUID:</strong> {{ task.id }}
+                    </p>
+                    <p>
+                      <strong>Name:</strong> {{ task.name }}
+                    </p>
+                    <p>
+                      <strong>Created:</strong> {{ task.created_at | date: 'yyyy-MM-dd hh:mm' }}
+                    </p>
+                    <p>
+                      <strong>Description:</strong> {{ task.description }}
+                    </p>
+                    <p>
+                      <strong>Status:</strong> {{ task.status }}
+                    </p>
+                    <p>
+                      <strong>Assigned To:</strong> <a routerLink="{{'../../users/' + task.assignee?.id}}">{{ task.assignee?.name }}</a>
+                    </p>
+                    <p>
+                      <strong>Report To:</strong> <a routerLink="{{'../../users/' + task.reporter?.id}}">{{ task.reporter?.name }}</a>
+                    </p>
+                  </div>
+                </ng-template>
+              </p-card>
+              <p-divider></p-divider>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-card>
+
+  <!-- section Dialog -->
+  <p-dialog [(visible)]="dialogOpen" [modal]="true" [style]="{width: '450px'}" header="{{ task.id ? 'Edit' : 'Add' }} Task" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <div class="p-field">
+        <label for="name">Name</label>
+        <input [(ngModel)]="task.name" autofocus id="name" pInputText required type="text"/>
+        <small *ngIf="submitted && !task.name" class="p-error">Name is required.</small>
+      </div>
+      <p-divider></p-divider>
+      <p-button (click)="hideDialog()" class="p-button-text" icon="pi pi-times" label="Cancel"></p-button>
+      <p-button (click)="saveTask()" class="p-button-text" icon="pi pi-check" label="Save"></p-button>
+    </ng-template>
+  </p-dialog>
 </ion-content>

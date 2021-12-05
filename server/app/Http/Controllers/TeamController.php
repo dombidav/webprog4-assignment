@@ -24,7 +24,7 @@ class TeamController extends ResourceController
 
     protected function read(Team $team): JsonResponse
     {
-        return response()->json(['data' => $team->include(['user', 'users'])->withPerm()]);
+        return response()->json(['data' => $team->include(['user', 'users', 'projects'])->withPerm()]);
     }
 
     protected function edit(Team $team): JsonResponse

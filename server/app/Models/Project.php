@@ -23,7 +23,6 @@ class Project extends Model
     use UsesUuid, ApiResource;
 
     protected $fillable = ['name', 'shortname', 'description', 'team_id'];
-    protected $hidden = ['team_id'];
 
     public function team(): BelongsTo
     {

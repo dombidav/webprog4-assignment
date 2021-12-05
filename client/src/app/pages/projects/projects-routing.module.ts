@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ProjectsPage
   },
   {
-    path: 'project-read',
+    path: ':id',
     loadChildren: () => import('./project-read/project-read.module').then( m => m.ProjectReadPageModule)
   }
 ]

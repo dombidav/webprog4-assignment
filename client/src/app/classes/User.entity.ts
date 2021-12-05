@@ -36,14 +36,14 @@ export class User implements IUser{
 
   static factory(user: IUser|any) {
     return new User(
-      user.id ?? '',
-      user.name ?? '',
-      user.email ?? '',
-      user.password ?? '',
-      user.created_at ?? (new Date()).toISOString(),
-      user.updated_at ?? (new Date()).toISOString(),
-      user.edit ?? false,
-      user.del ?? false
+      user?.id ?? '',
+      user?.name ?? '',
+      user?.email ?? '',
+      user?.password ?? '',
+      user?.created_at ?? (new Date()).toISOString(),
+      user?.updated_at ?? (new Date()).toISOString(),
+      user?.edit ?? false,
+      user?.del ?? false
     )
   }
 }

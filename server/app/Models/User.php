@@ -7,6 +7,7 @@ use App\Traits\UsesUuid;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -25,7 +26,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use Authenticatable, Authorizable, HasFactory, UsesUuid, ApiResource, HasRolesAndAbilities;
 
     protected $fillable = ['name', 'email'];
-
+    protected $appends = ['tasks', 'responsible'];
     protected $hidden = ['password'];
 
     public function getJWTIdentifier()
@@ -40,6 +41,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class, 'teams_users');
+    }
+
+    public function getTasksAttribute(): Collection|array
+    {
+        return Task::where('assignee_id', $this->id)->get();
+    }
+
+    public function getResponsibleAttribute(): Collection|array
+    {
+        return Task::where('reporter_id', $this->id)->get();
     }
 }
