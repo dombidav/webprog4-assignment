@@ -10,8 +10,8 @@ export class UserService extends CrudService<IUser, User>{
     return User.factory
   }
 
-  getBody(entity: User): any {
-    // TODO: Implement
+  getBody(__entity: User): any {
+    return {} // Unused
   }
 
   get uri(): string {

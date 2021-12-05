@@ -8,8 +8,8 @@
           <ng-container *ngFor="let p of pages; let i = index">
             <ion-menu-toggle *ngIf="p" auto-hide="false">
               <ion-item [routerLinkActiveOptions]="" [routerLink]="[p.url]" detail="false" lines="none" routerDirection="root" routerLinkActive="selected">
-                <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'" slot="start"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
+<!--                <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'" slot="start"></ion-icon>-->
+                <ion-label><i class="pi pi-{{p.icon}}"></i> &nbsp;&nbsp;{{ p.title }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
           </ng-container>

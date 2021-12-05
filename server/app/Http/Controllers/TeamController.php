@@ -6,6 +6,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Rule;
+use Silber\Bouncer\BouncerFacade;
 
 class TeamController extends ResourceController
 {
@@ -16,20 +17,19 @@ class TeamController extends ResourceController
 
     protected function browse(): JsonResponse
     {
-        return response()->json(['data' => Team::query()->with(['users', 'user'])->get()]);
+        return response()->json([
+            'data' => Team::allWith(['user', 'users'])->map(fn(Team $team) => $team->withPerm())
+        ]);
     }
 
     protected function read(Team $team): JsonResponse
     {
-        $team->user = $team->user()->first();
-        $team->users = $team->users()->get();
-        return response()->json(['data' => $team]);
+        return response()->json(['data' => $team->include(['user', 'users'])->withPerm()]);
     }
 
     protected function edit(Team $team): JsonResponse
     {
         $original = $team;
-
         $validated = $this->validation([
             'name' => ['min:3', 'regex:/[a-zA-Z0-9-_ ]+/'],
             'user_id' => ['required', Rule::exists('users', 'id')]
@@ -38,18 +38,19 @@ class TeamController extends ResourceController
         $team->update($validated);
         $team->save();
 
-        return response()->json(['original' => $original, 'updated' => $team]);
+        return response()->json(['original' => $original, 'updated' => $team->withPerm()]);
     }
 
     protected function add(): JsonResponse
     {
+        /** @var Team $team */
         $team = Team::make($this->validation([
             'name' => ['min:3', 'regex:/[a-zA-Z0-9-_ ]+/'],
             'user_id' => ['required', Rule::exists('users', 'id')]
         ]));
         $team->user_id = request('user_id');
         $team->save();
-        return response()->json(['data' => $team ], 201);
+        return response()->json(['data' => $team->withPerm()], 201);
     }
 
     protected function destroy(Team $team): JsonResponse
@@ -85,9 +86,7 @@ class TeamController extends ResourceController
         $team->users()->attach($user);
         $team->save();
         $team->refresh();
-        $team->user = $team->user()->first();
-        $team->users = $team->users()->get();
-        return response()->json(['data' => $team]);
+        return response()->json(['data' => $team->include(['user', 'users'])->withPerm()]);
     }
 
     protected function removeMember(Team $team, User $user): JsonResponse
@@ -95,8 +94,6 @@ class TeamController extends ResourceController
         $team->users()->detach($user);
         $team->save();
         $team->refresh();
-        $team->user = $team->user()->first();
-        $team->users = $team->users()->get();
-        return response()->json(['data' => $team]);
+        return response()->json(['data' => $team->include(['user', 'users'])->withPerm()]);
     }
 }

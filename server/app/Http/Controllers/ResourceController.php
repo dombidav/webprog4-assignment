@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
 use ReflectionClass;
 use ReflectionException;
+use Silber\Bouncer\BouncerFacade;
 
 abstract class ResourceController extends Controller
 {

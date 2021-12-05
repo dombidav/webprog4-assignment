@@ -2,10 +2,14 @@ import { RestService } from '../shared/services/rest.service'
 import { Observable } from 'rxjs'
 import { IResponse } from './IResponse.generic'
 import { map } from 'rxjs/operators'
+import { Injectable } from '@angular/core'
 
+@Injectable({
+  providedIn: 'root'
+})
 export abstract class CrudService<TInterface, TClass extends TInterface, TPost=any, TPut=any> {
   // section init
-  protected constructor(
+  constructor(
     protected readonly rest: RestService
   ) { }
 
@@ -60,6 +64,6 @@ export abstract class CrudService<TInterface, TClass extends TInterface, TPost=a
   }
 
   delete(tClass: TClass) {
-    return this.rest.delete(this.getDeleteUri(tClass))
+    return this.rest.delete(this.getDeleteUri(tClass[this.idName]))
   }
 }

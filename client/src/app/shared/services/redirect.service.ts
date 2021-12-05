@@ -10,10 +10,15 @@ export const HOME = '/home'
 export const PAGES = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   home: { title: 'Home', url: HOME, icon: 'home', guard: _ => true },
-  login: { title: 'Login', url: 'auth/login', icon: 'person', guard: (auth: AuthService) => !auth.activeUser },
-  register: { title: 'Register', url: 'auth/register', icon: 'persons', guard: (auth: AuthService) => !auth.activeUser },
-  profile: { title: 'Profile', url: 'profile', icon: 'person', guard: (auth: AuthService) => auth.activeUser },
-  teams: { title: 'Teams', url: 'teams', icon: 'people', guard: (auth: AuthService) => auth.activeUser },
+  login: { title: 'Login', url: 'auth/login', icon: 'sign-in', guard: (auth: AuthService) => !auth.activeUser },
+  register: { title: 'Register', url: 'auth/register', icon: 'user-plus', guard: (auth: AuthService) => !auth.activeUser },
+  profile: { title: 'Profile', url: 'profile', icon: 'user', guard: (auth: AuthService) => auth.activeUser },
+  users: { title: 'Users', url: 'users', icon: 'users', guard: (auth: AuthService) => auth.activeUser },
+  teams: { title: 'Teams', url: 'teams', icon: 'sitemap', guard: (auth: AuthService) => auth.activeUser },
+  projects: { title: 'Projects', url: 'projects', icon: 'briefcase', guard: (auth: AuthService) => auth.activeUser },
+  tasks: { title: 'Tasks', url: 'tasks', icon: 'calendar', guard: (auth: AuthService) => auth.activeUser },
+  myTasks: { title: 'My Tasks', url: 'my-tasks', icon: 'star', guard: (auth: AuthService) => auth.activeUser },
+  logout: { title: 'Logout', url: 'auth/logout', icon: 'sign-out', guard: (auth: AuthService) => auth.activeUser },
 }
 
 /** Service which handles redirects between components */

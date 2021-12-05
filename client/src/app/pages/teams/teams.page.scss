@@ -1,18 +1,1 @@
-tr {
-  &:not(:hover) {
-    color: var(--ion-color-primary) !important;
-  }
-  &:hover {
-    color: var(--ion-color-primary-contrast) !important;
-  }
-  a {
-    text-decoration: none;
-    color: unset;
-  }
-}
-
-:host ::ng-deep .p-dialog .product-image {
-  width: 150px;
-  margin: 0 auto 2rem auto;
-  display: block;
-}
+@import "src/theme/crud_table";

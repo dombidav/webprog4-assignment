@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
         User::factory()->create(['email' => 'admin@example.test', 'name' => 'Site Admin'])->assign('admin');
         User::factory()->create(['email' => 'moderator@example.test', 'name' => 'Site Moderator'])->assign('moderator');
         User::factory()->create(['email' => 'banned@example.test', 'name' => 'Banned User'])->assign('banned');
-        User::factory()->create(['email' => 'user@example.test', 'name' => 'Test User']);
+        User::factory()->create(['email' => 'user@example.test', 'name' => 'Test User'])->assign('user');
 
         User::factory(17)->create();
     }
